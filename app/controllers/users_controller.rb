@@ -25,10 +25,13 @@ class UsersController < ApplicationController
   # POST /users
   # POST /users.json
   def create
-    @user = User.new(user_params)
+    secure_params = params.require(:user).permit(:name, :email, 
+                                  :password, :password_confirmation)
+    @user = User.new(secure_params)
 
     respond_to do |format|
       if @user.save
+        flash[:success] = "Welcome to the FreshShop App!"
         format.html { redirect_to @user, notice: 'User was successfully created.' }
         format.json { render :show, status: :created, location: @user }
       else
