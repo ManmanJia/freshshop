@@ -13,3 +13,11 @@
  *= require_tree .
  *= require_self
  */
+
+ @import "bootstrap-sprockets";
+ @import "bootstrap";
+ @import "products.scss";
+
+body {
+	background: rgb(235, 238, 243);
+}
