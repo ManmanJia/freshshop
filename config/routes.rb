@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
   
 
+  
   resources :categories
-  resources :products
+  resources :products do
+    resources :reviews, except: [:show, :index]
+  end
   resources :users
   root 'static_pages#home'
 
