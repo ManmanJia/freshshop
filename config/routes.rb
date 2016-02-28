@@ -1,7 +1,11 @@
 Rails.application.routes.draw do
   
 
+  get '/cart'  => 'cart#index'
+  get '/cart/clear'  => 'cart#clearCart'
+  get '/cart/:id'  => 'cart#add'
   
+
   resources :categories
   resources :products do
     collection do
@@ -20,5 +24,7 @@ Rails.application.routes.draw do
   get    'login'   => 'sessions#new'
   post   'login'   => 'sessions#create'
   delete 'logout'  => 'sessions#destroy'
+
+  
 
 end

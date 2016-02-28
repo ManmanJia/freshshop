@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-
+  
   def search
       if params[:search].present?
         @products = Product.search(params[:search])
@@ -92,4 +92,6 @@ class ProductsController < ApplicationController
     def product_params
       params.require(:product).permit(:name, :price, :weight, :description, :image, :category_id)
     end
+    
+    
 end
