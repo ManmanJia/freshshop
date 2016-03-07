@@ -39,41 +39,9 @@ $red: #DB6161;
 			color: $red;
 		}
 	}
-}
-	
-#product_top {
-	margin-bottom: 50px;
-}
-
-#product_info, #descriptions {
-	background: white;
-	@include box-shadow;
-	min-height: 360px;
-	border-radius: 5px;
-	padding: 2em 8%;
-}
-
-.product_image {
-	max-width: 100%;
-	border-radius: 5px;
-	@include box-shadow;
-}
-
-#product_info {
-	h2 {
-		font-size: 36px;
-		font-weight: normal;
-		color: $red;
-	}
 	
 }
 
- #descriptions {
-	.description {
-		color: #8A8A8A;
-		font-size: 20px;
-	}
-}
 
 .form-inline {
 	margin-top: 15px;
