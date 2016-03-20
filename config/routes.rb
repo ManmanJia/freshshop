@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   
 
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
   get '/cart'  => 'cart#index'
   get '/cart/clear'  => 'cart#clearCart'
   get '/cart/:id'  => 'cart#add'
