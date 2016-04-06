@@ -1,0 +1,23 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @order.name %>
+</p>
+
+<p>
+  <strong>Address:</strong>
+  <%= @order.address %>
+</p>
+
+<p>
+  <strong>Phonenumber:</strong>
+  <%= @order.phonenumber %>
+</p>
+<p>
+  <strong>Total price:</strong>
+  <%= number_to_currency(@order.total_price,:unit => '€') %>
+</p>
+
+<%= link_to 'Edit', edit_order_path(@order) %> |
+<%= link_to 'Back', orders_path %>
