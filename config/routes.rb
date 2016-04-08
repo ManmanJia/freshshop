@@ -1,13 +1,12 @@
 Rails.application.routes.draw do
   
 
+  
+  
   resources :orders
   resources :line_items
   resources :carts
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  get '/cart'  => 'cart#index'
-  get '/cart/clear'  => 'cart#clearCart'
-  get '/cart/:id'  => 'cart#add'
   
 
   resources :categories

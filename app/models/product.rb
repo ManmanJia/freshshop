@@ -1,4 +1,5 @@
 class Product < ActiveRecord::Base
+
 	searchkick
 	has_many :reviews
 	has_many :orders

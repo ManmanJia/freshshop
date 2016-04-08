@@ -1,15 +1,13 @@
 class ProductsController < ApplicationController
   before_action :set_product, only: [:show, :edit, :update, :destroy]
-  
-  def search
+
+ def search
       if params[:search].present?
         @products = Product.search(params[:search])
       else
         @products = Product.all
       end
     end
-
-
   # GET /products
   # GET /products.json
   def index
@@ -24,7 +22,7 @@ class ProductsController < ApplicationController
   # GET /products/1
   # GET /products/1.json
   def show
-     @reviews = Review.where(product_id: @product.id).order("created_at DESC")
+    @reviews = Review.where(product_id: @product.id).order("created_at DESC")
   
      if @reviews.blank?
       @avg_review = 0
@@ -90,8 +88,6 @@ class ProductsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def product_params
-      params.require(:product).permit(:name, :price, :weight, :description, :image, :category_id)
+      params.require(:product).permit(:name, :price, :weight, :description, :image_url,:image, :category_id)
     end
-    
-    
 end
