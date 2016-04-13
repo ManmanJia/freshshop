@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :set_order, only: [:show, :edit, :update, :destroy]
-
+  before_action :correct_user,   only: :destroy
   # GET /orders
   # GET /orders.json
   def index
@@ -33,7 +33,7 @@ end
   # POST /orders
   # POST /orders.json
   def create
-    @order = Order.new(order_params)
+    @order = current_user.orders.build(order_params)
         @order.add_line_items_from_cart(current_cart)
 
     respond_to do |format|
@@ -81,9 +81,13 @@ end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def order_params
-      params.require(:order).permit(:name, :address, :phonenumber)
+      params.require(:order).permit(:name, :address, :phonenumber,:total_price)
     end
-
+  
+    def correct_user
+              @order = current_user.orders.find_by(id: params[:id])
+              redirect_to root_url if @order.nil?
+            end
 end
 
 

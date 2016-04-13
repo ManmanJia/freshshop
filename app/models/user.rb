@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
    has_many :reviews, dependent: :destroy
    has_many :orders
+   has_many :carts
      attr_accessor :remember_token
      before_save { self.email = email.downcase }
 	 validates :name, presence: true, length: { in: 9..30 }

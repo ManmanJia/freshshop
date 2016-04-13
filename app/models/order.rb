@@ -1,7 +1,8 @@
 class Order < ActiveRecord::Base
 	has_many :line_items, :dependent => :destroy
 	validates :name, :address, :phonenumber, :presence => true  
-	
+	belongs_to :user
+  validates :user_id, presence: true
   def total_price
     @total_price ||= line_items.includes(:product).reduce(0) do |sum, line_item|
       sum + (line_item.quantity * line_item.product.price)
