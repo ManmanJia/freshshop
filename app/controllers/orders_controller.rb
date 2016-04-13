@@ -14,13 +14,16 @@ class OrdersController < ApplicationController
 
   # GET /orders/new
   def new
+    if logged_in?
     @cart = current_cart  
-  if @cart.line_items.empty?  
+    if @cart.line_items.empty?  
     redirect_to products_url, :notice => "Your cart is empty"  
     return  
-  end  
+    end  
     @order = Order.new
-    
+    else
+    redirect_to login_path
+    end
 end
 
   # GET /orders/1/edit

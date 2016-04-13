@@ -1,5 +1,7 @@
 class CartsController < ApplicationController
+  
   before_action :set_cart, only: [:show, :edit, :update, :destroy]
+  
 
   # GET /carts
   # GET /carts.json
@@ -14,7 +16,11 @@ class CartsController < ApplicationController
 
   # GET /carts/new
   def new
+    if logged_in?
     @cart = Cart.new
+    else
+    redirect_to login_path
+    end
   end
 
   # GET /carts/1/edit
@@ -63,6 +69,7 @@ class CartsController < ApplicationController
 
   private
     # Use callbacks to share common setup or constraints between actions.
+    
     def set_cart
       @cart = Cart.find(params[:id])
     end
